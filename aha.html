@@ -1,0 +1,46 @@
+<script>
+    // ubah ke function
+        let isi = prompt("pilih kendaraan anda dengan menuliskan angkanya: (1.mobil atau 2.motor))")
+        let duration = prompt("berapa lama anda parkir ")
+        let firsthourmob = 4000
+        let feeperhourmob = 3000
+        let maxfeemob = 25000
+        let firsthour = 3000
+        let feeperhour = 2000
+        let maxfee = 20000
+        let total = 0
+    function fan(k,d){
+   
+    if(k==1){ 
+          totalmob = firsthourmob
+            }if(duration<=0.167){
+                alert('gratis')
+            }
+        else if(duration<2){
+            total = firsthourmob
+    
+        }else if(duration>=2){
+                total = firsthourmob + (feeperhourmob * (duration - 1))
+            }
+        if(total > maxfeemob){
+            total = maxfeemob
+        }
+    else if(k==2){
+        if(duration<=0.167){
+                alert('gratis')
+            }
+    
+        else if(duration<2){
+                total = firsthour
+        }
+        else if(duration>=2){
+                total = firsthour + (feeperhour * (duration - 1))
+            }
+        if(total > maxfee){
+            total = maxfee
+        }
+    }
+    }
+    fan(isi,duration)
+    alert(`total biaya parkir anda Rp ${total}`)
+    </script>

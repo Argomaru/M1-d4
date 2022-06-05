@@ -1,0 +1,55 @@
+<script>
+  //books = ['ipa', 'ips', 'fisika', 'kimia', 'bio']
+  // function
+  // 1. show books
+  // 2. add books
+  // 3. delete books
+  // 4. edit books
+  // 5. exit
+
+  var books = ["ipa", "ips", "fisika", "kimia", "bio"];
+  var pilihan = 0;
+
+  function tampil(books) {
+    let show = books.join(`, \n`);
+    return show;
+  }
+
+  function tambah(books) {
+    let masuk = prompt("masukan nama buku yang ingin ditambah: ");
+    books.push(masuk);
+    return masuk;
+  }
+
+  function hapus(books) {
+    let hapus = prompt("masukan nama buku yang akan dihapus: ");
+    books.pop(hapus);
+    return hapus;
+  }
+
+  function edit(books) {
+    let edit = prompt("masukan nama buku yang akan diedit: ");
+    let index = books.indexOf(edit);
+    let ganti = prompt("masukan nama buku pengganti: ");
+    return (books[index] = ganti);
+  }
+
+  while (pilihan != 5) {
+    pilihan = prompt(`
+         1. Daftar buku \n
+         2. Tambah buku\n 
+         3. Delete buku \n
+         4. Edit buku \n 
+         5. Exit`);
+
+    if (pilihan == 1) {
+      alert(tampil(books));
+    } else if (pilihan == 2) {
+      alert(tambah(books));
+    } else if (pilihan == 3) {
+      alert(hapus(books));
+    } else if (pilihan == 4) {
+      edit(books);
+    }
+  }
+</script>

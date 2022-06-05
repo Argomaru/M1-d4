@@ -1,0 +1,80 @@
+<script>
+  let choices = 0;
+  const keranjang = [];
+  const arrAnjing = [
+    ["Pug", 20000, 10],
+    ["Papillon", 25000, 10],
+    ["Maltese", 3000, 20],
+  ];
+
+  function system(choices) {
+    if (choices == 1) {
+      let varinfo = "";
+      arrAnjing.forEach((i) => {
+        varinfo += `Anjing jenis ${i[0]} disediakan dengan harga sebesar ${i[1]}.Stock tersisa ${i[2]}\n`;
+        // alert(varinfo);
+      }); //the fuk
+      alert(varinfo);
+    } else if (choices == 2) {
+      //masukin anjing ke keranjang
+      let temp = [];
+      let isi = prompt("jenis anjing yang ingin dipilih: ");
+      for (let i = 0; i < arrAnjing.length; i++) {
+        temp.push(arrAnjing[i][0]);
+      }
+      if (!temp.includes(isi)) {
+        alert(
+          "jenis tidak ditemukan, mohon diisi sesuai dengan nama yang ada di list. "
+        );
+        return;
+      }
+      if (!temp.includes(isi)) {
+        keranjang.push(isi);
+      }
+    } else if (choices == 3) {
+      let cart = keranjang.length ? keranjang.join(", ") : "";
+      let hapuslist = prompt(
+        "masukan nama jenis anjing yang ingin dihapus.\n daftar keranjang: " +
+          cart
+      );
+      if (!keranjang.includes(hapuslist)) {
+        alert(hapuslist + "type is not found");
+      } else {
+        keranjang.splice(keranjang.indexOf(hapuslist), 1);
+      }
+    } else if (choices == 4) {
+      let qty = 0;
+      let total = 0;
+      let kosong = "";
+
+      for (let i = 0; i < arrAnjing.length; i++) {
+        qty = prompt(`berapa banyak anjing ${keranjang[i]} yang ingin dibeli?`);
+        for (let i = 0; i < arrAnjing.length; i++) {
+          if (arrAnjing[i].includes(keranjang[i])) {
+            kosong += `anjing ${keranjang[i]} qty ${qty} @harga Rp.${
+              arrAnjing[i][2]
+            } total harga Rp.${qty * arrAnjing[i][2]}\n`;
+            total += qty * arrAnjing[i][2];
+          }
+        }
+      }
+      let resultakhir = prompt(
+        `Berikut adalah tagihan pembelian anda:\n ${kosong} \nbertotalkan ${total}\n Konfirmasi pembayaran anda?\n 1.Yes \n 2. No`
+      );
+      if (resultakhir == 1) {
+        choices = 5;
+      }
+    }
+  }
+
+  while (choices != 5) {
+    choices = prompt(
+      `1. Daftar Anjing\n 
+      2. Add to Cart \n
+      3. Delete list keranjang\n 
+      4. Konfirmasi belanjaan\n 
+      5. Exit`
+    );
+    system(choices);
+  }
+</script>
